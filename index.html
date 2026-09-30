@@ -1,0 +1,251 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Technical Project Presentation</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/5.1.0/reset.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/5.1.0/reveal.min.css">
+<style>
+  :root {
+    --bg: #0f0f11;
+    --fg: #f2f2f0;
+    --dim: #8a8a90;
+    --faint: #2a2a2e;
+    --accent: #ff8a3d;
+  }
+  html, body, .reveal { background: var(--bg); }
+  .reveal { font-family: "Inter", system-ui, sans-serif; font-size: 34px; color: var(--fg); }
+  .reveal .slides { text-align: left; }
+
+  .reveal h1, .reveal h2 { font-family: inherit; color: var(--fg); margin: 0; letter-spacing: -0.035em; line-height: 1.05; text-transform: none; }
+  .reveal h1 { font-size: 3.4em; font-weight: 800; }
+  .reveal h2 { font-size: 2.1em; font-weight: 700; }
+  .reveal p { margin: 0; line-height: 1.4; }
+
+  .kicker { font-size: 0.55em; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent); margin-bottom: 1.2em !important; }
+  .sub { color: var(--dim); font-size: 0.95em; margin-top: 0.9em !important; }
+  .accent { color: var(--accent); }
+  .dim { color: var(--dim); }
+  .mono { font-family: "JetBrains Mono", ui-monospace, monospace; }
+
+  /* list of short lines, no bullets */
+  .lines { margin-top: 1.4em; display: grid; gap: 0.7em; font-size: 1.05em; }
+  .lines div { display: flex; gap: 0.9em; align-items: baseline; }
+  .lines .k { color: var(--dim); font-size: 0.75em; font-weight: 600; min-width: 3.6em; }
+
+  /* big numbers */
+  .stats { display: flex; gap: 2.4em; margin-top: 1.4em; }
+  .stat b { display: block; font-size: 2.3em; font-weight: 800; letter-spacing: -0.04em; line-height: 1; }
+  .stat span { display: block; color: var(--dim); font-size: 0.75em; margin-top: 0.5em; }
+
+  /* option rows */
+  .opts { margin-top: 1.2em; display: grid; gap: 0; font-size: 0.9em; }
+  .opts div { display: grid; grid-template-columns: 1.1fr 1fr; padding: 0.55em 0; border-top: 1px solid var(--faint); }
+  .opts div span:last-child { color: var(--dim); }
+  .opts.rows { font-size: 1em; grid-template-columns: none; }
+  .opts.rows div { grid-template-columns: 5.2em 1fr; padding: 0.7em 0; }
+  .opts.rows div span:first-child { font-weight: 700; }
+  .opts.rows div > span:last-child { color: var(--fg); }
+  .opts.rows .accent { color: var(--accent) !important; font-weight: 600; }
+  .opts div.win span { color: var(--accent); font-weight: 600; }
+
+  /* diagrams */
+  .flow { display: flex; align-items: center; gap: 0.6em; margin-top: 1.4em; font-size: 0.8em; }
+  .flow .n { border: 1.5px solid #4a4a50; border-radius: 12px; padding: 0.7em 1em; white-space: nowrap; line-height: 1.35; }
+  .flow .n.hl { border-color: var(--accent); color: var(--accent); }
+  .flow .a { color: var(--dim); font-size: 0.8em; text-align: center; white-space: nowrap; }
+  .flow .a i { display: block; font-style: normal; font-size: 0.8em; margin-top: 0.2em; }
+
+  .code { font-family: "JetBrains Mono", monospace; white-space: pre; font-size: 0.62em; line-height: 1.6; background: #17171a; border: 1px solid var(--faint); border-radius: 12px; padding: 1em 1.3em; margin-top: 1.2em; color: #d8d8d4; display: inline-block; }
+  .code .c { color: #6c6c72; }
+  .code .s { color: var(--accent); }
+
+  .todo { display: inline-block; margin-top: 1.4em !important; font-size: 0.55em; color: var(--accent); border: 1px dashed var(--accent); border-radius: 8px; padding: 0.5em 0.8em; align-self: flex-start; }
+
+  .reveal .slides > section.video { padding: 0; }
+  .video video { width: 100%; border-radius: 14px; }
+  .reveal .progress { color: var(--accent); height: 3px; }
+  .reveal .controls { color: var(--dim); }
+  .reveal .slide-number { background: transparent; color: var(--dim); font-family: "Inter", sans-serif; font-size: 14px; }
+</style>
+</head>
+<body>
+<div class="reveal"><div class="slides">
+
+<section>
+  <h1>Technical Project<br>Presentation</h1>
+  <p class="sub">Vedant Roy</p>
+</section>
+
+<section>
+  <p class="kicker">Previous work</p>
+  <div class="opts rows">
+    <div><span>Genmo</span><span>Eng #3. Sole owner of video pre-training data<br><span class="accent">800 TB · 600M clips · 10k concurrent VMs</span></span></div>
+    <div><span>Triton</span><span>Merged PRs in OpenAI's GPU compiler</span></div>
+    <div><span>Go</span><span>WebAssembly imports in the compiler's Wasm backend</span></div>
+    <div><span>Exa</span><span>Built the Rust web crawler; now a $700M company</span></div>
+  </div>
+  <aside class="notes">30 seconds, then move on. Genmo: scaled the dataset from under 5M to 600M clips; also long-context sharding, the inference server, open-source Mochi 1.</aside>
+</section>
+
+<section class="video">
+  <video src="flux3-action-games.mp4" data-autoplay muted loop playsinline></video>
+  <aside class="notes">FLUX 3 Action playing games. Games are a proxy for robotics: parallel, faster than real time, no risk. To do this research you have to run the model closed-loop against real games, and nothing existed for that.</aside>
+</section>
+
+<section>
+  <h2>Two parts</h2>
+  <div class="lines">
+    <div><span class="k">1</span><span>Infrastructure <span class="dim">to run games for evals</span></span></div>
+    <div><span class="k">2</span><span>Research <span class="dim">to post-train a model that plays</span></span></div>
+  </div>
+  <aside class="notes">Sole owner of the infra. 3–4 researchers, ~3,000 evals/day. Then I became a user of my own system.</aside>
+</section>
+
+<!-- PART 1 -->
+<section>
+  <p class="kicker">Part 1 · Infrastructure</p>
+  <h2>All research was<br>blocked on evals</h2>
+  <p class="sub">The spec: <span class="mono">keys in, frames out</span></p>
+  <aside class="notes">Not given: where games run, the API, which games. Soft constraint: prefer games in our training data.</aside>
+</section>
+
+<section>
+  <h2>Constraints</h2>
+  <div class="lines">
+    <div><span class="k">01</span><span>1,000 machines at once</span></div>
+    <div><span class="k">02</span><span>Deterministic: 50 ms means 50 ms</span></div>
+    <div><span class="k">03</span><span>Start mid-game, not at the menu</span></div>
+    <div><span class="k">04</span><span>Metrics, not just pixels</span></div>
+  </div>
+  <aside class="notes">Why determinism: the model trained on smooth 20 FPS footage, so no train/test shift. Latency-insensitive, so you can batch and eval slow models. Same inputs give the same result: lower variance, and you can branch evals from hard moments.</aside>
+</section>
+
+<section>
+  <h2>Options</h2>
+  <div class="opts">
+    <div><span>Windows GPUs, stream video</span><span>can't freeze time</span></div>
+    <div><span>Pause / resume the VM</span><span>50 ms becomes 67 ms</span></div>
+    <div><span>GPU snapshots</span><span>don't exist for graphics</span></div>
+    <div class="win"><span>Firecracker snapshots, on CPU</span><span>✓ chosen</span></div>
+  </div>
+  <aside class="notes">Also rejected: booting and scripting each game to the start point on every eval (slow and flaky at 3k/day). Cloud Hypervisor has GPU support, but GPU snapshotting only exists for CUDA (Modal), not gaming. Chosen: Linux + Proton + llvmpipe. Cost: CPU rendering ~6x slower than real time; only DRM-free single-player games (GOG).</aside>
+</section>
+
+<section>
+  <h2>What shipped</h2>
+<div class="code"><span class="c"># game is frozen between steps</span>
+with Env.create(<span class="s">"racing_game/track_2"</span>) as env:
+    obs = env.step([Key.UP, Key.LEFT], dt=0.05)
+    obs.frame, obs.state[<span class="s">"speed_mps"</span>]</div>
+  <div></div>
+  <div class="flow">
+    <div class="n">SDK</div><div class="a">→</div>
+    <div class="n">Sandbox service</div><div class="a">→<i>fork snapshot</i></div>
+    <div class="n hl">Frozen game VM</div>
+  </div>
+  <aside class="notes">A daemon is copied into the VM at boot, not baked into the snapshot, so I can iterate on the API without re-snapshotting every game. The SDK talks to it over HTTP.</aside>
+</section>
+
+<section>
+  <p class="kicker">The hard part</p>
+  <h2>Ask for 50 ms.<br>Get <span class="accent">66.7 ms</span>.</h2>
+  <p class="sub">Slow CPU frames make the engine run catch-up physics ticks</p>
+  <aside class="notes">Tried hooking the game clock (QPC) with a time-scaling library. A 33 ms frame makes the engine run 2 ticks of 16.7 ms, so 50 ms asked becomes 66.7 ms: 4/3 too fast. Some games read the timer directly and skip QPC entirely. Show the Excalidraw fake-clock table if they want depth.</aside>
+</section>
+
+<section>
+  <h2>Fix: reverse-engineer<br>every game loop</h2>
+  <p class="sub">LLM + Ghidra, pin 1 frame = 1 physics tick</p>
+  <aside class="notes">Scaffolding: decompile, write its own tests, spin up sandboxes repeatedly until it passes the verification protocol. Start positions are codified as workflow files (the LLM drives menus with a VLM), so snapshots are reproducible to 0.02% and can be rebuilt on another vendor.</aside>
+</section>
+
+<section>
+  <h2>Verify it</h2>
+  <div class="lines">
+    <div><span class="k">×100</span><span>Same inputs, identical output</span></div>
+    <div><span class="k">=</span><span>One 100 ms step = two 50 ms steps</span></div>
+  </div>
+  <p class="sub">Caught: <span class="accent">25%</span> of runs dropped the first key press</p>
+  <aside class="notes">Also stitch frames into a video by logical time and check it looks like training data. The dropped keypress was a race on snapshot resume; the fix was a delay. Once the protocol was solid, the LLM's job became "make this game pass."</aside>
+</section>
+
+<section>
+  <h2>Owned it end to end</h2>
+  <div class="stats">
+    <div class="stat"><b>$200k+</b><span>spend, scaled</span></div>
+    <div class="stat"><b>1</b><span>enterprise license, negotiated</span></div>
+    <div class="stat"><b>1</b><span>vendor kernel, recompiled</span></div>
+  </div>
+  <aside class="notes">Picked the stack, sourced the vendor, negotiated the contract. Got them to recompile their kernel with /dev/uinput and raise limits for large games. With researchers: shaped the API with them; after the first rollouts produced 16 unscoreable videos, added in-game metrics; step_at_least confused people, so I renamed it. TODO: one more collaboration story.</aside>
+</section>
+
+<!-- PART 2 -->
+<section>
+  <p class="kicker">Part 2 · Research</p>
+  <h2>Turn a video model<br>into a player</h2>
+  <div class="flow">
+    <div class="n">past 4 s<br><span class="dim">frames + actions</span></div><div class="a">→</div>
+    <div class="n hl">diffusion model</div><div class="a">→</div>
+    <div class="n">next 4 s<br><span class="dim">frames + actions</span></div><div class="a">→</div>
+    <div class="n">run 1 s of actions</div>
+  </div>
+  <aside class="notes">Given: a pre-trained video diffusion model, the idea to add actions as a modality, acquired gameplay data. Jointly denoise video and actions; the video is a workspace for planning. Keys: vector in [-1, 1], pressed if > 0. Drop the predicted video at inference, keep 1 s of actions, repeat. TODO: architecture details you can share.</aside>
+</section>
+
+<section>
+  <h2>What broke</h2>
+  <div class="opts">
+    <div><span>Model cuts to replays</span><span>replays in the training data</span></div>
+    <div><span>JPEG mismatch hurts</span><span>augmentations, and now it plays unseen games</span></div>
+    <div><span>Mouse breaks the loss</span><span>normalize to screen fraction</span></div>
+  </div>
+  <aside class="notes">Replays: found by watching the model's own predicted video. It's a debugging tool. Training data had replays with people mashing keys, so I changed the data acquisition method. Also: first game's car was too small for the model to render, so I switched games. Mouse deltas hit 13 while keys stay in [-1, 1].</aside>
+</section>
+
+<!-- PART 3 -->
+<section>
+  <p class="kicker">Part 3 · Evals</p>
+  <h2>Rollouts</h2>
+  <div class="flow">
+    <div class="n">Slurm</div><div class="a">→</div>
+    <div class="n hl">GPU<br><span class="dim">16 games batched</span></div><div class="a">⇄</div>
+    <div class="n">16 sandboxes</div><div class="a">→</div>
+    <div class="n">dashboard</div>
+  </div>
+  <p class="sub">GPU utilization <span class="accent">30% → 70%</span></p>
+  <aside class="notes">Fixed 500-step rollouts, so static assignment is fine. Sandboxes crash ~1 in 50; that rollout is lost. What I'd change: a pull-based queue once rollout lengths vary, plus mid-rollout checkpoints. v1 was deliberately simple: the hard part was the games.</aside>
+</section>
+
+<section>
+  <h2>Eval infrastructure</h2>
+  <div class="lines">
+    <div><span class="k">Problem</span><span>Many variants, scattered results</span></div>
+    <div><span class="k">Have</span><span>Idle inference GPUs</span></div>
+    <div><span class="k">Built</span><span class="dim">…</span></div>
+  </div>
+  <p class="todo">TODO: what you built, numbers, which team you worked with</p>
+</section>
+
+<section>
+  <div class="stats">
+    <div class="stat"><b>3,000</b><span>evals / day</span></div>
+    <div class="stat"><b>3–4</b><span>researchers unblocked</span></div>
+  </div>
+  <p class="sub">The bottleneck is now training, not infra.</p>
+  <p class="todo">TODO: what you want to work on at Anthropic</p>
+</section>
+
+</div></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/5.1.0/reveal.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/5.1.0/plugin/notes/notes.min.js"></script>
+<script>
+  Reveal.initialize({ hash: true, slideNumber: "c/t", transition: "fade", backgroundTransition: "none",
+    width: 1280, height: 720, margin: 0.1, center: true, plugins: [RevealNotes] });
+</script>
+</body>
+</html>
